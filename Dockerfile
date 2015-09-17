@@ -8,7 +8,6 @@ echo "deb-src http://security.kali.org/kali-security sana/updates main contrib n
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
 RUN apt-get install -y openssh-server
-RUN mkdir /var/run/sshd
 RUN echo 'root:M00nF1sh' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
