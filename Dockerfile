@@ -4,7 +4,7 @@ MAINTAINER steev@kali.org
 RUN echo "deb http://archive.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && \
 echo "deb-src http://archive.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
+RUN apt-get -y update && apt-get -y -f dist-upgrade && apt-get clean
 RUN apt-get install -y openssh-server
 RUN echo 'root:M00nF1sh' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
